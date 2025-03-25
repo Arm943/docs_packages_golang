@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Методы поиска подстроки в строке</title>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1,
+        h2 {
+            color: #333;
+        }
+
+        code {
+            background-color: #f1f1f1;
+            padding: 5px;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        pre {
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 1rem;
+            overflow-x: auto;
+        }
+
+        .example {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Методы поиска подстроки в строке</h1>
+
+    <div class="example">
+        <h2>1. <code>strings.Contains(s, substr string) bool</code></h2>
+        <p><strong>Что делает?</strong><br>Проверяет, содержит ли строка <code>s</code> подстроку <code>substr</code>.
+        </p>
+        <p><strong>Применение:</strong></p>
+        <ul>
+            <li>Проверить, есть ли слово <code>"Go"</code> в <code>"I love Go!"</code>.</li>
+            <li>Проверить, есть ли имя <code>"Армен"</code> в <code>"Привет, Армен!"</code>.</li>
+        </ul>
+        <p><strong>Пример кода:</strong></p>
+        <pre><code class="language-go">
+package main
+import (
+    "fmt"
+    "strings"
+)
+
+func main() {
+    fmt.Println(strings.Contains("I love Go!", "Go"))  // true
+    fmt.Println(strings.Contains("Hello, world!", "Hi")) // false
+}
+    </code></pre>
+    </div>
+
+    <div class="example">
+        <h2>2. <code>strings.ContainsAny(s, chars string) bool</code></h2>
+        <p><strong>Что делает?</strong><br>Проверяет, содержит ли строка <code>s</code> хотя бы один символ из набора
+            <code>chars</code>.
+        </p>
+        <p><strong>Применение:</strong></p>
+        <ul>
+            <li>Проверить, есть ли в строке хотя бы одна буква из <code>"abc"</code>.</li>
+            <li>Проверить, содержит ли пароль запрещённые символы <code>"$#%&"</code>.</li>
+        </ul>
+        <p><strong>Пример кода:</strong></p>
+        <pre><code class="language-go">
+package main
+import (
+    "fmt"
+    "strings"
+)
+
+func main() {
+    fmt.Println(strings.ContainsAny("hello", "aeiou"))  // true (есть 'e' и 'o')
+    fmt.Println(strings.ContainsAny("hello", "xyz"))    // false (нет 'x', 'y', 'z')
+    fmt.Println(strings.ContainsAny("password123!", "!$%")) // true (есть '!')
+}
+    </code></pre>
+    </div>
+
+    <div class="example">
+        <h2>3. <code>strings.ContainsRune(s string, r rune) bool</code></h2>
+        <p><strong>Что делает?</strong><br>Проверяет, содержит ли строка <code>s</code> конкретную руну (символ).</p>
+        <p><strong>Применение:</strong></p>
+        <ul>
+            <li>Проверить, есть ли буква <code>'Г'</code> в <code>"Голанг"</code>.</li>
+            <li>Проверить, встречается ли <code>'€'</code> в тексте.</li>
+        </ul>
+        <p><strong>Пример кода:</strong></p>
+        <pre><code class="language-go">
+package main
+import (
+    "fmt"
+    "strings"
+)
+
+func main() {
+    fmt.Println(strings.ContainsRune("Голанг", 'Г'))  // true
+    fmt.Println(strings.ContainsRune("Hello", 'H'))   // true
+    fmt.Println(strings.ContainsRune("123456", '7'))  // false
+}
+    </code></pre>
+    </div>
+
+    <div class="example">
+        <h2>4. <code>strings.HasPrefix(s, prefix string) bool</code></h2>
+        <p><strong>Что делает?</strong><br>Проверяет, начинается ли строка <code>s</code> с подстроки
+            <code>prefix</code>.
+        </p>
+        <p><strong>Применение:</strong></p>
+        <ul>
+            <li>Проверить, начинается ли URL с <code>"https://"</code>.</li>
+            <li>Проверить, начинается ли имя файла с <code>"log_"</code>.</li>
+        </ul>
+        <p><strong>Пример кода:</strong></p>
+        <pre><code class="language-go">
+package main
+import (
+    "fmt"
+    "strings"
+)
+
+func main() {
+    fmt.Println(strings.HasPrefix("https://google.com", "https://"))  // true
+    fmt.Println(strings.HasPrefix("file.txt", "log_"))               // false
+}
+    </code></pre>
+    </div>
+
+    <div class="example">
+        <h2>5. <code>strings.HasSuffix(s, suffix string) bool</code></h2>
+        <p><strong>Что делает?</strong><br>Проверяет, заканчивается ли строка <code>s</code> подстрокой
+            <code>suffix</code>.
+        </p>
+        <p><strong>Применение:</strong></p>
+        <ul>
+            <li>Проверить, заканчивается ли файл на <code>".jpg"</code>.</li>
+            <li>Проверить, заканчивается ли предложение точкой <code>"."</code>.</li>
+        </ul>
+        <p><strong>Пример кода:</strong></p>
+        <pre><code class="language-go">
+package main
+import (
+    "fmt"
+    "strings"
+)
+
+func main() {
+    fmt.Println(strings.HasSuffix("document.pdf", ".pdf"))  // true
+    fmt.Println(strings.HasSuffix("image.jpeg", ".png"))    // false
+}
+    </code></pre>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-go.min.js"></script>
+
+</body>
+
+</html>
