@@ -5,46 +5,38 @@ import (
 	"strings"
 )
 
-var text = "GoLang Is FUN"
-
-func demo() {
-	toUp := strings.ToUpper(text)
-	toLo := strings.ToLower(text)
-	fmt.Println(toUp, toLo)
-
-}
-
 func demo1() {
-	text1 := " Go is cool "
-	d := strings.TrimSpace(text1)
-	fmt.Println(d)
-
+	a := strings.Split("apple,banana,kiwi", ",")
+	fmt.Println(a)
 }
 
 func demo2() {
-	text2 := "***--Go.Lang--***"
-	a := strings.TrimLeft(text2, "*-.")
-	b := strings.TrimRight(a, "*-.")
+	a := []string{"Go", "is", "awesome"}
+	b := strings.Join(a, " ")
 	fmt.Println(b)
 }
 
 func demo3() {
-	text3 := "I love Go. Go is powerful. Go rocks!"
-	a := strings.Replace(text3, "Go", "Golang", 1)
-	b := strings.Replace(text3, "Go", "Golang", 4)
-	fmt.Println(a)
+	a := " Go is cool "
+	b := strings.Fields(a)
+	fmt.Println(b)
+}
+func demo4() {
+	a := "name:Armen:developer"
+	b := strings.SplitN(a, ":", 2)
 	fmt.Println(b)
 }
 
-func demo4() {
-	a := strings.Repeat("Go", 5)
-	fmt.Println(a)
+func demo5() {
+	a := "2025-04-19"
+	b := strings.SplitAfter(a, "-")
+	fmt.Println(b)
 }
 
 func main() {
-	demo()
 	demo1()
 	demo2()
 	demo3()
 	demo4()
+	demo5()
 }
