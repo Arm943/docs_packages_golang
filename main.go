@@ -5,38 +5,32 @@ import (
 	"strings"
 )
 
-func demo1() {
-	a := strings.Split("apple,banana,kiwi", ",")
-	fmt.Println(a)
-}
-
-func demo2() {
-	a := []string{"Go", "is", "awesome"}
-	b := strings.Join(a, " ")
+func demo1(a string) {
+	b := strings.ReplaceAll(a, "Go", "Golang")
 	fmt.Println(b)
+}
+func demo2() {
+	a := strings.NewReplacer("&", "и", "<", "меньше", ">", "больше")
+	fmt.Println(a.Replace("5 < 10 & 10 > 5"))
 }
 
 func demo3() {
-	a := " Go is cool "
-	b := strings.Fields(a)
-	fmt.Println(b)
-}
-func demo4() {
-	a := "name:Armen:developer"
-	b := strings.SplitN(a, ":", 2)
-	fmt.Println(b)
+	var builder strings.Builder
+	builder.WriteString("Hello")
+	builder.WriteString(" from")
+	builder.WriteString(" Builder")
+	fmt.Println(builder.String())
 }
 
-func demo5() {
-	a := "2025-04-19"
-	b := strings.SplitAfter(a, "-")
-	fmt.Println(b)
+func demo4() {
+	text := "go is great"
+	title := strings.Title(text)
+	fmt.Println(title)
 }
 
 func main() {
-	demo1()
+	demo1("I love Go. Go is powerful. Go is fun.")
 	demo2()
 	demo3()
 	demo4()
-	demo5()
 }
